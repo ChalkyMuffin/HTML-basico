@@ -1,16 +1,54 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/index.css" rel="stylesheet" />
     <title>Vite + React + TS</title>
-  </head>
-  <body class="flex m-0 place-items-center min-w-[320px] min-h-[100vh]" >
-    
-    
+</head>
+
+<body class="flex flex-col min-h-screen dark:bg-gray-300">
+
+    <div class="flex flex-col flex-grow">
+        <h1 class="text-5xl text-center font-bold">Profile</h1>
+
+        <h4 class="text-2xl  font-semibold">
+            <b>Name: </b>
+            <span>Adrián Cavazos Guerra</span>
+        </h4>
+
+        <p><b>Skills: </b></p>
+        <ul>
+            <li>Backend</li>
+            <li>Databases</li>
+            <li>Node.js</li>
+            <li>JavaScript</li>
+        </ul>
+    </div>
+
+    <footer class="w-full dark:bg-gray-800 mt-auto">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+                <a href="https://flowbite.com/" class="hover:underline">Social Media</a>
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="https://github.com/ChalkyMuffin" class="hover:underline me-4 md:me-6">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/adri%C3%A1n-cavazos-guerra-96a141251/?msgControlName=view_message_button&msgConversationId=2-NjIyYTg0MzYtM2E2ZS00ZDM0LTg2MzctZWM1YjVjYzM0MTA0XzAxMw%3D%3D&msgOverlay=true" class="hover:underline me-4 md:me-6">Linkedin</a>
+                </li>
+                <li>
+                    <a href="mailto:A00833841@tec.mx" class="hover:underline me-4 md:me-6">Email</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+</body>
+
 </html>
