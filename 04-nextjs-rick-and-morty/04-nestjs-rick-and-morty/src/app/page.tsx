@@ -1,76 +1,52 @@
-'use client'
+'use client';
 
-import { getCharacter } from 'rickmortyapi'
+import { getCharacters } from 'rickmortyapi';
 import { useState, useEffect } from 'react';
-import { fetchFromAPI } from '@/api/api';
 
 interface Character {
   id: number;
   name: string;
   status: string;
   species: string;
-  image: any;
+  image: string;
 }
-
-const rick = await getCharacter(1)
-
-async function fetchAndTransformCharacter(): Promise<any> {
-  const rick = await getCharacter(1);
-  const transformedRick: Character = {
-    id: rick.data.id,
-    name: rick.data.name,
-    status: rick.data.status,
-    species: rick.data.species,
-    image: rick.data.image
-  };
-
-  console.log(transformedRick)
-
-  return transformedRick;
-}
-
-
 
 const Home = () => {
-  const [rick, setRick] = useState<Character | null>(null); // Initialize rick as null
+  const [characters, setCharacters] = useState<Character[]>([]); // Initialize characters as an empty array
 
   useEffect(() => {
-    const fetchAndTransformCharacter = async () => {
+    const fetchAndTransformCharacters = async () => {
       try {
-        const rickData = await getCharacter(1);
-        const transformedRick: Character = {
-          id: rickData.data.id,
-          name: rickData.data.name,
-          status: rickData.data.status,
-          species: rickData.data.species,
-          image: rickData.data.image,
-        };
-        setRick(transformedRick); // Set rick state with transformed data
+        const charactersData = await getCharacters({ page: 1 });
+        const transformedCharacters: Character[] = charactersData.data.results.map((char: any) => ({
+          id: char.id,
+          name: char.name,
+          status: char.status,
+          species: char.species,
+          image: char.image,
+        }));
+        setCharacters(transformedCharacters); // Set characters state with transformed data
       } catch (error) {
-        console.error('Error fetching and transforming character:', error);
+        console.error('Error fetching and transforming characters:', error);
       }
     };
 
-    fetchAndTransformCharacter(); // Call the function on component mount
+    fetchAndTransformCharacters(); // Call the function on component mount
   }, []);
-
-
 
   return (
     <div>
       <h1>Rickymartin</h1>
-      {rick && ( // Render only if rick data is available
-        <div>
-          <h2>{rick.name}</h2>
-          <p>Status: {rick.status}</p>
-          <p>Species: {rick.species}</p>
-          <img src={rick.image} alt={rick.name} />
+      {characters.map((character) => (
+        <div key={character.id}>
+          <h2>{character.name}</h2>
+          <p>Status: {character.status}</p>
+          <p>Species: {character.species}</p>
+          <img src={character.image} alt={character.name} />
         </div>
-      )}
+      ))}
     </div>
   );
-
-
 };
 
 export default Home;
