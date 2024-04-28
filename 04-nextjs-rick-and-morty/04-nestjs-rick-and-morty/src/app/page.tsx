@@ -14,8 +14,7 @@ interface Character {
 }
 
 const Home = () => {
-  const [characters, setCharacters] = useState<Character[]>([]); // Initialize characters as an empty array
-
+  const [characters, setCharacters] = useState<Character[]>([]); 
   useEffect(() => {
     const fetchAndTransformCharacters = async () => {
       try {
@@ -27,13 +26,13 @@ const Home = () => {
           species: char.species,
           image: char.image,
         }));
-        setCharacters(transformedCharacters); // Set characters state with transformed data
+        setCharacters(transformedCharacters); 
       } catch (error) {
         console.error('Error fetching and transforming characters:', error);
       }
     };
 
-    fetchAndTransformCharacters(); // Call the function on component mount
+    fetchAndTransformCharacters(); 
   }, []);
 
   return (
