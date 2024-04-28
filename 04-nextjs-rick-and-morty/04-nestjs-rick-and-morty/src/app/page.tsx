@@ -2,6 +2,8 @@
 
 import { getCharacters } from 'rickmortyapi';
 import { useState, useEffect } from 'react';
+import CharacterCard from "./Components/CharacterCard";
+import NavBar from "./Components/Navbar";
 
 interface Character {
   id: number;
@@ -17,8 +19,8 @@ const Home = () => {
   useEffect(() => {
     const fetchAndTransformCharacters = async () => {
       try {
-        const charactersData = await getCharacters({ page: 1 });
-        const transformedCharacters: Character[] = charactersData.data.results.map((char: any) => ({
+        const charactersData = await getCharacters();
+        const transformedCharacters: Character[] = charactersData.data.results.map((char: Character) => ({
           id: char.id,
           name: char.name,
           status: char.status,
@@ -36,15 +38,23 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Rickymartin</h1>
+    <NavBar></NavBar>  
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-7 place-items-center">
+        
       {characters.map((character) => (
-        <div key={character.id}>
-          <h2>{character.name}</h2>
-          <p>Status: {character.status}</p>
-          <p>Species: {character.species}</p>
-          <img src={character.image} alt={character.name} />
-        </div>
-      ))}
+  <div key={character.id}>
+    <CharacterCard
+      id={character.id}
+      name={character.name}
+      status={character.status}
+      species={character.species}
+      image={character.image}
+    />
+  </div>
+))}
+  </div>
+
     </div>
   );
 };
