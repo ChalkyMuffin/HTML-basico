@@ -1,0 +1,2 @@
+# use this if your project is at the root of your repo
+npx lint-staged
