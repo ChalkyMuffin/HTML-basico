@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "04-nestjs-rick-and-morty",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:": "next lint --fix",
+    "lint:fix": "next lint --fix",
     "prepare": "cd .. && husky 04-nestjs-rick-and-morty/.husky || true"
   },
   "dependencies": {
