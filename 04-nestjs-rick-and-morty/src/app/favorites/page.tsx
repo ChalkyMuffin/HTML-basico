@@ -46,11 +46,11 @@ export default function Favorites() {
           {characters.map((character, index) => (
             <CharacterCard
               key={index}
-              id={character.id!}
-              image={character.image!}
-              name={character.name!}
-              status={character.status!}
-              species={character.species!}
+              id={character.id}
+              image={character.image}
+              name={character.name}
+              status={character.status}
+              species={character.species}
             />
           ))}
         </div>

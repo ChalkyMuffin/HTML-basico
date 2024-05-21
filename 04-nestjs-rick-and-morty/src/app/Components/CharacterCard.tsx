@@ -45,7 +45,7 @@ const CharacterCard: React.FC<Props> = ({
 
   return (
     <div className='max-w-sm rounded-lg border border-gray-200 bg-yellow-500 shadow dark:border-gray-700 dark:bg-amber-400'>
-      <a href='#'>
+      <a href='/'>
         <img className='w-full rounded-t-lg' src={image} alt='' />
       </a>
       <div className='p-5'>

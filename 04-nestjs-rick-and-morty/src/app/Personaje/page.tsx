@@ -2,7 +2,6 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import NavBar from '../Components/Navbar'
-import { getCharacters } from 'rickmortyapi'
 
 function CharacterProfilePage() {
   const idParams = useSearchParams()
@@ -51,7 +50,7 @@ function CharacterProfilePage() {
         throw new Error('Failed to fetch first episode')
       }
       const data = await response.json()
-      setFirstEpisode(data.name!)
+      setFirstEpisode(data.name)
     } catch (error) {
       console.error('Error fetching character:', error)
     }
